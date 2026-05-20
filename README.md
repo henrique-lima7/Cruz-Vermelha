@@ -40,10 +40,11 @@ Para chegar ao resultado atual, o projeto passou por um processo rigoroso de des
 
 ---
 
-👥 Equipe Técnica
-Davi de Santana
+👥 Equipe Técnica:
 
 José Henrique
+
+Davi de Santana
 
 Gustavo Pereira de Almeida
 
