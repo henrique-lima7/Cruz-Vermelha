@@ -2,7 +2,15 @@
 
 Conectamos a intenção de ajudar com a facilidade de doar. Este projeto reconstrói a experiência digital da Cruz Vermelha Brasileira, transformando uma plataforma anteriormente poluída e inacessível em um portal limpo, intuitivo e focado no usuário.
 
-**[Acesse o projeto finalizado aqui](https://henrique-lima7.github.io/cruz-vermelha/)**
+<div align="center">
+  <br/>
+  <h2>🏥 Portal Cruz Vermelha — Aplicação Online</h2>
+  <p>Monitore, explore e interaja com o sistema publicado oficialmente.</p>
+  <a href="https://henrique-lima7.github.io/cruz-vermelha/" target="_blank">
+    <img src="https://img.shields.io/badge/ABRIR%20APLICAÇÃO%20AGORA-D32F2F?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Link Cruz Vermelha" height="40">
+  </a>
+  <br/><br/>
+</div>
 
 ---
 
