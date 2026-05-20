@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias — Cruz Vermelha Brasileira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div id="transition"></div>
+<div id="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-header">
+      <div><div class="modal-title">Como você quer ajudar?</div><div class="modal-subtitle">Toda doação salva vidas</div></div>
+      <div class="modal-close" id="modal-close">×</div>
+    </div>
+    <div class="modal-tabs">
+      <div class="modal-tab active" data-tab="sangue">🩸 Doação de Sangue</div>
+      <div class="modal-tab" data-tab="financeiro">💳 Doação Financeira</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-panel active" id="modal-panel-sangue">
+        <div class="modal-row">
+          <div class="modal-field"><div class="modal-label">Nome completo *</div><input class="modal-input" type="text" placeholder="Seu nome completo"></div>
+          <div class="modal-field"><div class="modal-label">Data de nascimento *</div><input class="modal-input" type="date"></div>
+        </div>
+        <div class="modal-row">
+          <div class="modal-field"><div class="modal-label">Tipo sanguíneo</div><select class="modal-select"><option>Selecione</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></div>
+          <div class="modal-field"><div class="modal-label">Telefone *</div><input class="modal-input" type="tel" placeholder="(11) 99999-0000"></div>
+        </div>
+        <div class="modal-hint">✓ Respondemos em até 1 dia útil para confirmar seu agendamento.</div>
+      </div>
+      <div class="modal-panel" id="modal-panel-financeiro">
+        <div class="modal-field"><div class="modal-label">Valor da doação</div><div class="amount-pills"><div class="amount-pill" onclick="selectPill(this)">R$ 25</div><div class="amount-pill selected" onclick="selectPill(this)">R$ 50</div><div class="amount-pill" onclick="selectPill(this)">R$ 100</div><div class="amount-pill" onclick="selectPill(this)">Outro valor</div></div></div>
+        <div class="modal-hint">✓ Recibo de doação emitido automaticamente após confirmação.</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-ghost" id="modal-cancel">Cancelar</button>
+      <button class="btn-primary">Confirmar doação →</button>
+    </div>
+  </div>
+</div>
+<div id="drawer-overlay"></div>
+<div id="mobile-drawer">
+  <nav class="drawer-nav" id="drawer-nav"></nav>
+  <div class="drawer-actions">
+    <button class="btn-primary" style="width:100%;justify-content:center;" data-modal="true">🩸 Doe sangue</button>
+  </div>
+</div>
+<div id="app"></div>
+<script>window._initialRoute = 'noticias';</script>
+<script src="../js/pages.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

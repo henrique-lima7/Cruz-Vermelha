@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Cruz Vermelha Brasileira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:       #CC1B1B;
+      --red-dark:  #A31515;
+      --red-light: #F5E6E6;
+      --red-mid:   #E8C4C4;
+      --cream:     #FAF8F4;
+      --cream2:    #F2EDE4;
+      --cream3:    #E8E0D0;
+      --ink:       #1A1209;
+      --ink2:      #4A3F30;
+      --ink3:      #8A7F6F;
+      --ink4:      #B8AE9C;
+      --white:     #FFFFFF;
+      --border:    rgba(26,18,9,0.10);
+      --border2:   rgba(26,18,9,0.18);
+      --shadow-lg: 0 12px 48px rgba(26,18,9,0.16);
+      --r:         10px;
+      --r-lg:      16px;
+      --r-xl:      24px;
+      --font-disp: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    }
+
+    html, body {
+      width: 100%; min-height: 100%;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    /* ── LAYOUT SPLIT ── */
+    .login-page {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── PAINEL ESQUERDO ── */
+    .login-left {
+      background: var(--red);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px;
+      overflow: hidden;
+    }
+
+    /* Cruz decorativa de fundo */
+    .login-left::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: 50%;
+      transform: translateY(-50%);
+      width: 320px; height: 320px;
+      background: rgba(255,255,255,0.06);
+      clip-path: polygon(
+        37% 0%, 63% 0%, 63% 37%, 100% 37%,
+        100% 63%, 63% 63%, 63% 100%, 37% 100%,
+        37% 63%, 0% 63%, 0% 37%, 37% 37%
+      );
+      animation: rotateSlow 40s linear infinite;
+    }
+    .login-left::after {
+      content: '';
+      position: absolute;
+      left: -60px; bottom: -60px;
+      width: 240px; height: 240px;
+      background: rgba(255,255,255,0.04);
+      clip-path: polygon(
+        37% 0%, 63% 0%, 63% 37%, 100% 37%,
+        100% 63%, 63% 63%, 63% 100%, 37% 100%,
+        37% 63%, 0% 63%, 0% 37%, 37% 37%
+      );
+    }
+    @keyframes rotateSlow {
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    .left-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      position: relative; z-index: 1;
+    }
+    .left-logo-box {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .left-logo-cross {
+      width: 18px; height: 18px;
+      background: white;
+      clip-path: polygon(
+        37% 0%, 63% 0%, 63% 37%, 100% 37%,
+        100% 63%, 63% 63%, 63% 100%, 37% 100%,
+        37% 63%, 0% 63%, 0% 37%, 37% 37%
+      );
+    }
+    .left-logo-text strong {
+      display: block;
+      font-family: var(--font-disp);
+      font-size: 15px;
+      color: white;
+      font-weight: 700;
+    }
+    .left-logo-text span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .left-hero {
+      position: relative; z-index: 1;
+    }
+    .left-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 24px;
+      padding: 5px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .left-title {
+      font-family: var(--font-disp);
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .left-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
+    }
+    .left-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 320px;
+    }
+
+    .left-stats {
+      display: flex;
+      gap: 32px;
+      position: relative; z-index: 1;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .left-stat-value {
+      font-family: var(--font-disp);
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    .left-stat-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 2px;
+    }
+
+    /* ── PAINEL DIREITO ── */
+    .login-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 48px 40px;
+      background: var(--cream);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* Tabs: Entrar / Cadastrar */
+    .auth-tabs {
+      display: flex;
+      background: var(--cream2);
+      border: 1px solid var(--border2);
+      border-radius: var(--r-lg);
+      padding: 4px;
+      margin-bottom: 32px;
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink3);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .auth-tab.active {
+      background: var(--white);
+      color: var(--ink);
+      box-shadow: 0 1px 6px rgba(26,18,9,0.10);
+    }
+
+    /* Painéis */
+    .auth-panel { display: none; }
+    .auth-panel.active { display: block; }
+
+    .form-title {
+      font-family: var(--font-disp);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .form-subtitle {
+      font-size: 13px;
+      color: var(--ink3);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+    .field-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--ink3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .field-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--border2);
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--ink);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+    }
+    .field-input::placeholder { color: var(--ink4); }
+    .field-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204,27,27,0.10);
+    }
+    .field-input.error {
+      border-color: var(--red);
+      background: var(--red-light);
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .password-wrap {
+      position: relative;
+    }
+    .password-wrap .field-input {
+      padding-right: 42px;
+    }
+    .toggle-pass {
+      position: absolute;
+      right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink4);
+      padding: 4px;
+      display: flex; align-items: center;
+      transition: color 0.15s;
+    }
+    .toggle-pass:hover { color: var(--ink2); }
+
+    .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      color: var(--ink3);
+      text-decoration: none;
+      margin-top: -8px;
+      margin-bottom: 20px;
+      transition: color 0.15s;
+    }
+    .forgot-link:hover { color: var(--red); }
+
+    /* Mensagem de erro */
+    .error-msg {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--red-light);
+      border: 1px solid var(--red-mid);
+      border-radius: var(--r);
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--red-dark);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .error-msg.visible { display: flex; }
+
+    /* Botão principal */
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: var(--red);
+      color: white;
+      border: none;
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-login:hover {
+      background: var(--red-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(204,27,27,0.28);
+    }
+    .btn-login:active { transform: translateY(0); }
+    .btn-login:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Spinner */
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--ink4);
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border2);
+    }
+
+    /* Social */
+    .btn-social {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--white);
+      border: 1.5px solid var(--border2);
+      border-radius: var(--r);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink2);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .btn-social:hover { border-color: var(--ink3); background: var(--cream2); }
+    .btn-social svg { flex-shrink: 0; }
+
+    /* Termos */
+    .terms-text {
+      font-size: 11px;
+      color: var(--ink4);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+    .terms-text a { color: var(--red); text-decoration: none; }
+    .terms-text a:hover { text-decoration: underline; }
+
+    /* Voltar ao site */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink3);
+      text-decoration: none;
+      margin-top: 28px;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: var(--ink); }
+
+    /* Checkbox */
+    .checkbox-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .checkbox-wrap input[type="checkbox"] {
+      width: 16px; height: 16px;
+      accent-color: var(--red);
+      margin-top: 2px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .checkbox-wrap label {
+      font-size: 12px;
+      color: var(--ink3);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+    .checkbox-wrap label a { color: var(--red); text-decoration: none; }
+
+    /* Animação de entrada */
+    .login-card > * {
+      animation: fadeUp 0.4s ease both;
+    }
+    .login-card > *:nth-child(1) { animation-delay: 0.05s; }
+    .login-card > *:nth-child(2) { animation-delay: 0.10s; }
+    .login-card > *:nth-child(3) { animation-delay: 0.15s; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .login-page { grid-template-columns: 1fr; }
+      .login-left { display: none; }
+      .login-right { padding: 32px 24px; justify-content: flex-start; padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-page">
+
+  <!-- ── PAINEL ESQUERDO ── -->
+  <div class="login-left">
+    <a href="../index.html" class="left-logo">
+      <div class="left-logo-box"><div class="left-logo-cross"></div></div>
+      <div class="left-logo-text">
+        <strong>Cruz Vermelha</strong>
+        <span>Brasileira</span>
+      </div>
+    </a>
+
+    <div class="left-hero">
+      <div class="left-tag">🩸 Plataforma de doações</div>
+      <div class="left-title">
+        Cada doação<br>é um ato de<br><em>generosidade</em>
+      </div>
+      <p class="left-desc">
+        Faça login para agendar sua doação de sangue ou contribuir financeiramente. Juntos salvamos mais vidas.
+      </p>
+    </div>
+
+    <div class="left-stats">
+      <div>
+        <div class="left-stat-value">4,5M</div>
+        <div class="left-stat-label">Doadores cadastrados</div>
+      </div>
+      <div>
+        <div class="left-stat-value">1 em 3s</div>
+        <div class="left-stat-label">Doação necessária</div>
+      </div>
+      <div>
+        <div class="left-stat-value">100%</div>
+        <div class="left-stat-label">Gratuito e seguro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PAINEL DIREITO ── -->
+  <div class="login-right">
+    <div class="login-card">
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <div class="auth-tab active" data-panel="entrar">Entrar</div>
+        <div class="auth-tab" data-panel="cadastrar">Cadastrar</div>
+      </div>
+
+      <!-- ═══ PAINEL: ENTRAR ═══ -->
+      <div class="auth-panel active" id="panel-entrar">
+        <div class="form-title">Bem-vindo de volta</div>
+        <div class="form-subtitle">Entre com sua conta para acessar a plataforma de doações.</div>
+
+        <div class="error-msg" id="login-error">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 5v4M8 11v.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          E-mail ou senha incorretos. Tente novamente.
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="login-email">E-mail</label>
+          <input class="field-input" id="login-email" type="email" placeholder="seu@email.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="login-senha">Senha</label>
+          <div class="password-wrap">
+            <input class="field-input" id="login-senha" type="password" placeholder="••••••••" autocomplete="current-password">
+            <button class="toggle-pass" type="button" onclick="togglePassword('login-senha', this)" aria-label="Mostrar senha">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <a href="#" class="forgot-link" onclick="showForgot(event)">Esqueci minha senha</a>
+
+        <button class="btn-login" id="btn-entrar" onclick="handleLogin()">
+          Entrar na conta
+        </button>
+
+        <div class="divider">ou continue com</div>
+
+        <button class="btn-social" type="button">
+          <svg width="18" height="18" viewBox="0 0 18 18">
+            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+            <path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+            <path d="M3.964 10.706A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.706V4.962H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.038l3.007-2.332z" fill="#FBBC05"/>
+            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.962L3.964 7.294C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+          </svg>
+          Continuar com Google
+        </button>
+
+        <p class="terms-text">
+          Ao entrar, você concorda com nossos<br>
+          <a href="#">Termos de uso</a> e <a href="#">Política de privacidade</a>
+        </p>
+
+        <a href="../index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Voltar ao site
+        </a>
+      </div>
+
+      <!-- ═══ PAINEL: CADASTRAR ═══ -->
+      <div class="auth-panel" id="panel-cadastrar">
+        <div class="form-title">Criar conta</div>
+        <div class="form-subtitle">Cadastre-se para agendar doações e acompanhar seu histórico.</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="cad-nome">Nome</label>
+            <input class="field-input" id="cad-nome" type="text" placeholder="João">
+          </div>
+          <div class="field">
+            <label class="field-label" for="cad-sobrenome">Sobrenome</label>
+            <input class="field-input" id="cad-sobrenome" type="text" placeholder="Silva">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="cad-email">E-mail</label>
+          <input class="field-input" id="cad-email" type="email" placeholder="seu@email.com">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="cad-cpf">CPF</label>
+          <input class="field-input" id="cad-cpf" type="text" placeholder="000.000.000-00" maxlength="14" oninput="maskCPF(this)">
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="cad-senha">Senha</label>
+          <div class="password-wrap">
+            <input class="field-input" id="cad-senha" type="password" placeholder="Mínimo 8 caracteres">
+            <button class="toggle-pass" type="button" onclick="togglePassword('cad-senha', this)" aria-label="Mostrar senha">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.4"/>
+                <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="checkbox-wrap">
+          <input type="checkbox" id="cad-termos">
+          <label for="cad-termos">
+            Li e aceito os <a href="#">Termos de uso</a> e a <a href="#">Política de privacidade</a> da Cruz Vermelha Brasileira.
+          </label>
+        </div>
+
+        <button class="btn-login" id="btn-cadastrar" onclick="handleCadastro()">
+          Criar conta grátis
+        </button>
+
+        <a href="../index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Voltar ao site
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DE SUCESSO PÓS-LOGIN -->
+<div id="success-overlay" style="
+  position:fixed; inset:0;
+  background: rgba(26,18,9,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none;
+  transition: opacity 0.3s;
+">
+  <div id="success-box" style="
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px 36px;
+    max-width: 360px; width: 90%;
+    text-align: center;
+    box-shadow: 0 24px 64px rgba(26,18,9,0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  ">
+    <div style="font-size:52px; margin-bottom:16px; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;">🩸</div>
+    <div id="success-title" style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:700; color:#1A1209; margin-bottom:8px;">
+      Login realizado!
+    </div>
+    <div id="success-desc" style="font-size:13px; color:#8A7F6F; line-height:1.6; margin-bottom:24px;">
+      Bem-vindo de volta! Você será redirecionado para a página de doações.
+    </div>
+    <button onclick="goToDonate()" style="
+      width:100%; padding:13px;
+      background:#CC1B1B; color:#fff;
+      border:none; border-radius:10px;
+      font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; font-weight:600;
+      cursor:pointer;
+      transition: background 0.15s;
+    " onmouseover="this.style.background='#A31515'" onmouseout="this.style.background='#CC1B1B'">
+      Ir para doações →
+    </button>
+  </div>
+</div>
+
+<script>
+  /* ── TABS ── */
+  document.querySelectorAll('.auth-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.auth-panel').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      document.getElementById('panel-' + this.dataset.panel).classList.add('active');
+      document.getElementById('login-error').classList.remove('visible');
+    });
+  });
+
+  /* ── TOGGLE SENHA ── */
+  function togglePassword(id, btn) {
+    const input = document.getElementById(id);
+    const isPass = input.type === 'password';
+    input.type = isPass ? 'text' : 'password';
+    btn.innerHTML = isPass
+      ? `<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+           <path d="M2 2l12 12M6.5 6.7A2 2 0 0 0 9.3 9.5M4.2 4.3C2.6 5.4 1 8 1 8s2.5 5 7 5c1.4 0 2.7-.4 3.8-1.2M7 3.1C7.3 3 7.7 3 8 3c4.5 0 7 5 7 5s-.7 1.4-1.9 2.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+         </svg>`
+      : `<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+           <path d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z" stroke="currentColor" stroke-width="1.4"/>
+           <circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/>
+         </svg>`;
+  }
+
+  /* ── MÁSCARA CPF ── */
+  function maskCPF(input) {
+    let v = input.value.replace(/\D/g, '');
+    if (v.length > 9) v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
+    else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+    else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+    input.value = v;
+  }
+
+  /* ── ESQUECI SENHA ── */
+  function showForgot(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    alert(email
+      ? `Se o e-mail "${email}" estiver cadastrado, você receberá um link de redefinição em breve.`
+      : 'Digite seu e-mail no campo acima e clique em "Esqueci minha senha" novamente.'
+    );
+  }
+
+  /* ── LOGIN ── */
+  function handleLogin() {
+    const email  = document.getElementById('login-email').value.trim();
+    const senha  = document.getElementById('login-senha').value;
+    const errEl  = document.getElementById('login-error');
+    const btn    = document.getElementById('btn-entrar');
+
+    errEl.classList.remove('visible');
+    document.getElementById('login-email').classList.remove('error');
+    document.getElementById('login-senha').classList.remove('error');
+
+    if (!email || !senha) {
+      if (!email) document.getElementById('login-email').classList.add('error');
+      if (!senha) document.getElementById('login-senha').classList.add('error');
+      errEl.textContent = 'Preencha todos os campos obrigatórios.';
+      errEl.classList.add('visible');
+      return;
+    }
+
+    /* Simula loading */
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Entrando...';
+
+    setTimeout(() => {
+      /* Demo: qualquer senha com 3+ chars é aceita */
+      if (senha.length >= 3) {
+        sessionStorage.setItem('cvb_logged', '1');
+        sessionStorage.setItem('cvb_user', email.split('@')[0]);
+        showSuccess(email.split('@')[0]);
+      } else {
+        btn.disabled = false;
+        btn.innerHTML = 'Entrar na conta';
+        errEl.textContent = 'E-mail ou senha incorretos. Tente novamente.';
+        errEl.classList.add('visible');
+        document.getElementById('login-email').classList.add('error');
+        document.getElementById('login-senha').classList.add('error');
+      }
+    }, 1200);
+  }
+
+  /* ── CADASTRO ── */
+  function handleCadastro() {
+    const nome   = document.getElementById('cad-nome').value.trim();
+    const email  = document.getElementById('cad-email').value.trim();
+    const senha  = document.getElementById('cad-senha').value;
+    const termos = document.getElementById('cad-termos').checked;
+    const btn    = document.getElementById('btn-cadastrar');
+
+    if (!nome || !email || !senha || !termos) {
+      alert('Preencha todos os campos e aceite os termos para continuar.');
+      return;
+    }
+    if (senha.length < 8) {
+      alert('A senha deve ter no mínimo 8 caracteres.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Criando conta...';
+
+    setTimeout(() => {
+      sessionStorage.setItem('cvb_logged', '1');
+      sessionStorage.setItem('cvb_user', nome);
+      showSuccess(nome, true);
+    }, 1400);
+  }
+
+  /* ── POPUP DE SUCESSO ── */
+  function showSuccess(nome, isNew = false) {
+    const overlay = document.getElementById('success-overlay');
+    const box     = document.getElementById('success-box');
+    document.getElementById('success-title').textContent =
+      isNew ? `Conta criada, ${nome}!` : `Olá, ${nome}!`;
+    document.getElementById('success-desc').textContent =
+      isNew
+        ? 'Sua conta foi criada com sucesso. Você já pode agendar sua primeira doação.'
+        : 'Login realizado! Você será redirecionado para a página de doações.';
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'all';
+    box.style.transform = 'scale(1)';
+  }
+
+  function goToDonate() {
+    window.location.href = '../pages/como-ajudar.html';
+  }
+
+  /* ── REDIRECIONA SE JÁ LOGADO ── */
+  if (sessionStorage.getItem('cvb_logged')) {
+    window.location.href = '../pages/como-ajudar.html';
+  }
+</script>
+
+</body>
+</html>
