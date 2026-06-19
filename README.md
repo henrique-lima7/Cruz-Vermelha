@@ -1,4 +1,4 @@
-# 🩸 Redesign Cruz Vermelha Brasileira — Foco em Acessibilidade e Clareza
+# 🏥 Redesign Cruz Vermelha Brasileira — Foco em Acessibilidade e Clareza
 
 Conectamos a intenção de ajudar com a facilidade de doar. Este projeto reconstrói a experiência digital da Cruz Vermelha Brasileira, transformando uma plataforma anteriormente poluída e inacessível em um portal limpo, intuitivo e focado no usuário.
 
